@@ -5,6 +5,28 @@ This project re-engineers a manual, Excel-dependent weekly reporting process int
 
 ---
 
+
+## Business Analysis & Requirements Engineering
+
+### 1. Business Scenario (AS-IS vs. TO-BE Analysis)
+* **AS-IS State (Legacy Problem):** Sales Managers manually extract 3 separate raw CSV files every Friday afternoon. The manual workflow requires opening Excel, aligning customer IDs, fixing missing dates, and running error-prone VLOOKUPs. This process consumes **4 operational hours weekly**, introduces frequent data-entry errors, and delays executive decision-making.
+* **TO-BE State (Automated Solution):** Raw CSV files auto-ingest into a centralized landing folder. Power Query processes automated data transformation and loads clean datasets directly into a Snowflake Star Schema model. Power BI reports execute scheduled daily refreshes, providing executives with real-time analytics.
+* **Gap Analysis:** Identified key operational bottlenecks: lack of an automated ETL pipeline, absence of a structured Star Schema data warehouse, and reliance on static email attachments rather than centralized BI reporting.
+
+---
+
+### 2. Requirements Management (MoSCoW Prioritization)
+
+| Priority | Category | Requirement Description | Implementation Status |
+| :--- | :--- | :--- | :--- |
+| **Must-Have** | ETL & Modeling | Automated multi-CSV consolidation, Star Schema architecture (`FactSales`, `DimCustomer`, `DimProduct`, `DimDate`), automated total revenue calculation | **Completed** (`power_query_logic.m`, `sql_schema.sql`) |
+| **Should-Have** | Visual Reporting | Dynamic region/category slicers in Power BI, automated scheduled dataset refreshes | **Completed** (Power BI Service) |
+| **Could-Have** | UX / Executive | Mobile-optimized dashboard layout for executive access | *Planned Feature* |
+| **Won't-Have** | Advanced ML | Predictive machine learning sales forecasting model | *Out of Scope for Phase 1* |
+
+---
+
+
 ## Process Architecture (BPMN Workflow)
 
 ### 1. AS-IS Process (Manual & Error-Prone)
