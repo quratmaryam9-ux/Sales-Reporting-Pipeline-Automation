@@ -1,30 +1,26 @@
 # Sales Reporting Pipeline Automation & Data Warehousing
 
 ## Executive Summary
-This repository contains an end-to-end automated sales reporting pipeline designed to eliminate manual data aggregation, streamline ETL execution, and deliver a clean star-schema model in Snowflake for executive reporting.
+This project re-engineers a manual, Excel-dependent weekly reporting process into an automated, scalable ETL pipeline. By replacing manual copy-pasting and formula lookups with Power Query transformations and a Snowflake star-schema model, the reporting process moves from static Friday emails to near-real-time dashboard availability.
 
 ---
 
-## Process Architecture (BPMN)
-The reporting workflow was mapped using **BPMN 2.0** standards to identify bottlenecks, eliminate manual handoffs, and establish automated triggers.
+## Process Architecture (BPMN Workflow)
 
-- **BPMN Source:** `docs/process_flow.bpmn`
-- **Key Improvement:** Automated data ingestion and error handling pre-validation.
+### 1. AS-IS Process (Manual & Error-Prone)
+The legacy process required manual CSV exports, Excel copy-pasting, custom VLOOKUPs, and ad-hoc data fixes—leading to delays and operational risk.
 
----
+![AS-IS Process Flow](as_is_process.png)
 
-## Data Model Architecture (Snowflake)
-Built using a **Star Schema** deployed on **Snowflake** to support fast query performance for high-volume sales metrics:
+### 2. TO-BE Process (Automated ETL Pipeline)
+The modernized pipeline automates file ingestion from the landing folder, applies data cleaning rules via Power Query, maps fields into a Star Schema, and executes scheduled auto-refreshes in Power BI.
 
-- **FactSales:** Core transactional facts (`QuantitySold`, `UnitPrice`, `TotalAmount`, `TransactionDate`).
-- **DimCustomer:** Customer metadata and segmentation.
-- **DimStores:** Store attributes and regional hierarchies.
-- **DimDistrict:** Regional classifications for macro-level aggregation.
+![TO-BE Process Flow](to_be_process.png)
 
 ---
 
-## Tech Stack
-- **Modeling:** BPMN 2.0
-- **Transformation:** Power Query (M)
-- **Data Warehouse:** Snowflake (SQL / DDL)
+## Technical Implementation
+- **Data Ingestion & ETL:** Power Query (M Language) for automated file pickup, cleaning, and schema mapping.
+- **Data Warehouse:** Snowflake dimensional modeling (`FactSales`, `DimCustomer`, `DimStores`, `DimDistrict`).
+- **Reporting Layer:** Power BI with DAX aggregations and automated scheduled refresh.
 - **BI & Analytics:** Power BI
