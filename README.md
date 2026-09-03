@@ -10,12 +10,12 @@ This project re-engineers a manual, Excel-dependent weekly reporting process int
 ### 1. AS-IS Process (Current Manual State)
 The legacy process required manual CSV exports, Excel copy-pasting, custom VLOOKUPs, and ad-hoc data fixes—leading to delays and operational risk.
 
-![AS-IS Process Flow](as_is_process.png)
+![AS-IS Process Flow](<AS-IS Process Flow.png>)
 
 ### 2. TO-BE Process (Automated ETL Pipeline)
 The modernized pipeline automates file ingestion from the landing folder, applies data cleaning rules via Power Query, maps fields into a Star Schema, and executes scheduled auto-refreshes in Power BI.
 
-![TO-BE Process Flow](to_be_process.png)
+![TO-BE Process Flow](<TO-BE Process Flow.png>)
 
 ---
 
