@@ -26,6 +26,16 @@ This project re-engineers a manual, Excel-dependent weekly reporting process int
 
 ---
 
+## Business Value & Quantitative Impact (AS-IS vs. TO-BE)
+
+| Metric / Dimension | AS-IS State (Manual Excel) | TO-BE State (Power Query / Power BI) | Business Impact |
+| :--- | :--- | :--- | :--- |
+| **Process Time** | ~4 hours / week (Manual exports, pastes, VLOOKUPs) | ~5 minutes / week (Zero-touch scheduled refresh) | **98% time reduction** (190+ hours saved annually) |
+| **Data Quality & Risk** | High risk of broken formulas, missing IDs, and manual keying errors | High reliability via enforced schema validation and automated data cleaning | **Eliminates human error** & manual data fixes |
+| **Scalability** | Crashes or slows down heavily as row counts grow past Excel limits | Handles millions of rows using Power Query ETL and optimized Star Schema | **Future-proofs reporting** for enterprise growth |
+| **Reporting Frequency**| Weekly static snapshots (often delayed by data cleanup) | Near real-time / daily automated updates | **Faster executive decision-making** |
+
+---
 
 ## Process Architecture (BPMN Workflow)
 
