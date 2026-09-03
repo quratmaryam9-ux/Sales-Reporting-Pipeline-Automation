@@ -7,7 +7,7 @@ This project re-engineers a manual, Excel-dependent weekly reporting process int
 
 ## Process Architecture (BPMN Workflow)
 
-### 1. AS-IS Process (Manual & Error-Prone)
+### 1. AS-IS Process (Current Manual State)
 The legacy process required manual CSV exports, Excel copy-pasting, custom VLOOKUPs, and ad-hoc data fixes—leading to delays and operational risk.
 
 ![AS-IS Process Flow](as_is_process.png)
