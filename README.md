@@ -7,7 +7,7 @@ This project re-engineers a manual, Excel-dependent weekly reporting process int
 
 ## Process Architecture (BPMN Workflow)
 
-### 1. AS-IS Process (Current Manual State)
+### 1. AS-IS Process (Manual & Error-Prone)
 The legacy process required manual CSV exports, Excel copy-pasting, custom VLOOKUPs, and ad-hoc data fixes—leading to delays and operational risk.
 
 ![AS-IS Process Flow](<AS-IS Process Flow.png>)
@@ -19,8 +19,60 @@ The modernized pipeline automates file ingestion from the landing folder, applie
 
 ---
 
-## Technical Implementation
-- **Data Ingestion & ETL:** Power Query (M Language) for automated file pickup, cleaning, and schema mapping.
-- **Data Warehouse:** Snowflake dimensional modeling (`FactSales`, `DimCustomer`, `DimStores`, `DimDistrict`).
-- **Reporting Layer:** Power BI with DAX aggregations and automated scheduled refresh.
-- **BI & Analytics:** Power BI
+## Technical Implementation & Repository Structure
+
+- **Data Ingestion & Cleaning (`power_query_logic.m`):** Power Query (M Language) script to combine landing files, handle null values, and enforce datatypes.
+- **Data Warehouse Schema (`sql_schema.sql`):** Snowflake DDL establishing standard star-schema dimension and fact tables (`FactSales`, `DimStores`, `DimCustomer`, `DimDistrict`).
+- **Reporting & Visualization:** Power BI dynamic dashboards with automated scheduled refreshes.
+
+---
+
+## Power BI & DAX Analytics Layer
+
+Dynamic measures and business logic built into the reporting model:
+
+```dax
+// 1. Total Revenue
+Total Revenue = 
+SUM(FactSales[Total_Amount])
+
+// 2. Customer Lifetime Value (CLV)
+Customer Lifetime Value = 
+CALCULATE(
+    [Total Revenue],
+    ALLEXCEPT(DimCustomer, DimCustomer[Customer_ID])
+)
+
+// 3. Pareto VIP Customer Identification (Top 10% Revenue Contributors)
+Is VIP Customer = 
+VAR CustomerRank = 
+    RANKX(
+        ALL(DimCustomer), 
+        [Total Revenue], , 
+        DESC
+    )
+VAR TotalCustomers = COUNTROWS(ALL(DimCustomer))
+RETURN
+    IF(
+        DIVIDE(CustomerRank, TotalCustomers) <= 0.10, 
+        "VIP (Top 10%)", 
+        "Standard (90%)"
+    )
+
+// 4. Average Days Between Customer Purchases
+Avg Days Between Purchases = 
+AVERAGEX(
+    VALUES(FactSales[Customer_ID]),
+    VAR CurrentDate = SELECTEDVALUE(FactSales[Date])
+    VAR PreviousDate = 
+        CALCULATE(
+            MAX(FactSales[Date]),
+            FILTER(
+                ALL(FactSales),
+                FactSales[Customer_ID] = EARLY(FactSales[Customer_ID]) &&
+                FactSales[Date] < CurrentDate
+            )
+        )
+    RETURN
+        IF(NOT ISBLANK(PreviousDate), DATEDIFF(PreviousDate, CurrentDate, DAY), BLANK())
+)
