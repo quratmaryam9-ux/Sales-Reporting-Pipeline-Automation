@@ -46,7 +46,7 @@ The legacy process required manual CSV exports, Excel copy-pasting, custom VLOOK
 ![AS-IS Process Flow](<AS-IS Process Flow.png>)
 
 ### 2. TO-BE Process (Automated ETL Pipeline)
-The modernized pipeline automates file ingestion from the landing folder, applies data cleaning rules via Power Query, maps fields into a Star Schema, and executes scheduled auto-refreshes in Power BI.
+The modernized pipeline automates file ingestion from the landing folder, applies data cleaning rules via Power Query, maps fields into a Snowflake Schema, and executes scheduled auto-refreshes in Power BI.
 
 ![TO-BE Process Flow](<TO-BE Process Flow.png>)
 
