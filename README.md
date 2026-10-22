@@ -3,8 +3,10 @@
 **About this project:** 
 This is a portfolio case study. The business scenario (weekly manual sales reporting) and the time savings are modelled for demonstration using sample data. The architecture, Power Query, T-SQL DDL, DAX measures, and Power BI reporting model are my own design.
 
-## Executive Summary:
+## Executive Summary
+
 This project re-engineers a manual, Excel-dependent weekly reporting process into an automated, scalable ETL pipeline. By replacing manual copy-pasting with Power Query transformations and a structured T-SQL Snowflake Schema model, the reporting workflow moves from static Friday emails to automated, near-real-time Power BI dashboards.
+
 ---
 
 
