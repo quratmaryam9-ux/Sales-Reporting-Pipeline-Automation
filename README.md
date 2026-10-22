@@ -4,7 +4,7 @@
 This is a portfolio case study. The business scenario (weekly manual sales reporting) and the time savings are modelled for demonstration, using sample data. The architecture, Power Query and Snowflake code are my own design.
 
 ## Executive Summary
-This project re-engineers a manual, Excel-dependent weekly reporting process into an automated, scalable ETL pipeline. By replacing manual copy-pasting and formula lookups with Power Query transformations and a Snowflake star-schema model, the reporting process moves from static Friday emails to near-real-time dashboard availability.
+This project re-engineers a manual, Excel-dependent weekly reporting process into an automated, scalable pipeline. By replacing manual copy-pasting with Power Query transformations and a structured SQL data model, reporting moves from static Friday emails to automated, near-real-time dashboards.
 
 ---
 
