@@ -1,20 +1,19 @@
 # Sales Reporting Pipeline Automation & Data Warehousing
 
 **About this project:** 
-This is a portfolio case study. The business scenario (weekly manual sales reporting) and the time savings are modelled for demonstration, using sample data. The architecture, Power Query and Snowflake code are my own design.
+This is a portfolio case study. The business scenario (weekly manual sales reporting) and the time savings are modelled for demonstration using sample data. The architecture, Power Query, T-SQL DDL, DAX measures, and Power BI reporting model are my own design.
 
-## Executive Summary
-This project re-engineers a manual, Excel-dependent weekly reporting process into an automated, scalable pipeline. By replacing manual copy-pasting with Power Query transformations and a structured SQL data model, reporting moves from static Friday emails to automated, near-real-time dashboards.
-
+## Executive Summary:
+This project re-engineers a manual, Excel-dependent weekly reporting process into an automated, scalable ETL pipeline. By replacing manual copy-pasting with Power Query transformations and a structured T-SQL Snowflake Schema model, the reporting workflow moves from static Friday emails to automated, near-real-time Power BI dashboards.
 ---
 
 
 ## Business Analysis & Requirements Engineering
 
 ### 1. Business Scenario (AS-IS vs. TO-BE Analysis)
-* **AS-IS State (Legacy Problem):** Sales Managers manually extract 3 separate raw CSV files every Friday afternoon. The manual workflow requires opening Excel, aligning customer IDs, fixing missing dates, and running error-prone VLOOKUPs. This process consumes **4 operational hours weekly**, introduces frequent data-entry errors, and delays executive decision-making.
-* **TO-BE State (Automated Solution):** Raw CSV files auto-ingest into a centralized landing folder. Power Query processes automated data transformation and loads clean datasets directly into a Snowflake Star Schema model. Power BI reports execute scheduled daily refreshes, providing executives with real-time analytics.
-* **Gap Analysis:** Identified key operational bottlenecks: lack of an automated ETL pipeline, absence of a structured Star Schema data warehouse, and reliance on static email attachments rather than centralized BI reporting.
+* **AS-IS State (Legacy Problem):** Sales Managers manually extract 3 separate raw CSV files every Friday afternoon. The manual workflow requires opening Excel, aligning customer IDs, fixing missing dates, and running error-prone VLOOKUPs. This process consumes 4 operational hours weekly, introduces frequent data-entry errors, and delays executive decision-making.
+* **TO-BE State (Automated Solution):** Raw CSV files auto-ingest into a centralized landing folder. Power Query processes automated data transformations and loads clean datasets into a normalized relational SQL database structured as a Snowflake Schema (FactSales $\rightarrow$ DimStores $\rightarrow$ DimDistrict). Power BI reports execute scheduled daily refreshes, providing executives with real-time analytics.
+* **Gap Analysis:** Identified key operational bottlenecks: lack of an automated ETL pipeline, absence of a structured relational Snowflake Schema, and reliance on static email attachments rather than centralized BI reporting.
 
 ---
 
