@@ -55,7 +55,7 @@ The modernized pipeline automates file ingestion from the landing folder, applie
 ## Technical Implementation & Repository Structure
 
 - **Data Ingestion & Cleaning (`power_query_logic.m`):** Power Query (M Language) script to combine landing files, handle null values, and enforce datatypes.
-- **Data Warehouse Schema (`sql_schema.sql`):** Snowflake DDL establishing standard star-schema dimension and fact tables (`FactSales`, `DimStores`, `DimCustomer`, `DimDistrict`).
+- **Data Warehouse Schema (`sql_schema.sql`):** Standard T-SQL (SQL Server) DDL establishing standard snowflake-schema dimension and fact tables (`FactSales`, `DimStores`, `DimCustomer`, `DimDistrict`).
 - **Reporting & Visualization:** Power BI dynamic dashboards with automated scheduled refreshes.
 
 ---
