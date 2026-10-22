@@ -19,11 +19,9 @@ This project re-engineers a manual, Excel-dependent weekly reporting process int
 
 ---
 
-### 2. Requirements Management (MoSCoW Prioritization)
-
 | Priority | Category | Requirement Description | Implementation Status |
 | :--- | :--- | :--- | :--- |
-| **Must-Have** | ETL & Modeling | Automated multi-CSV consolidation, Star Schema architecture (`FactSales`, `DimCustomer`, `DimProduct`, `DimDate`), automated total revenue calculation | **Completed** (`power_query_logic.m`, `sql_schema.sql`) |
+| **Must-Have** | ETL & Modeling | Automated multi-CSV consolidation, Snowflake Schema architecture (`FactSales`, `DimCustomer`, `DimStores`, `DimDistrict`), automated total revenue calculation | **Completed** (`power_query_logic.m`, `sql_schema.sql`) |
 | **Should-Have** | Visual Reporting | Dynamic region/category slicers in Power BI, automated scheduled dataset refreshes | **Completed** (Power BI Service) |
 | **Could-Have** | UX / Executive | Mobile-optimized dashboard layout for executive access | *Planned Feature* |
 | **Won't-Have** | Advanced ML | Predictive machine learning sales forecasting model | *Out of Scope for Phase 1* |
