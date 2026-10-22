@@ -67,18 +67,18 @@ The modernized pipeline automates file ingestion from the landing folder, applie
 Dynamic measures and business logic built into the reporting model:
 
 ```dax
-// 1. Total Revenue
+1. Total Revenue
 Total Revenue = 
 SUM(FactSales[Total_Amount])
 
-// 2. Customer Lifetime Value (CLV)
+2. Customer Lifetime Value (CLV)
 Customer Lifetime Value = 
 CALCULATE(
     [Total Revenue],
     ALLEXCEPT(DimCustomer, DimCustomer[Customer_ID])
 )
 
-// 3. Pareto VIP Customer Identification (Top 10% Revenue Contributors)
+3. Pareto VIP Customer Identification (Top 10% Revenue Contributors)
 Is VIP Customer = 
 VAR CustomerRank = 
     RANKX(
@@ -94,7 +94,7 @@ RETURN
         "Standard (90%)"
     )
 
-// 4. Average Days Between Customer Purchases
+4. Average Days Between Customer Purchases
 Avg Days Between Purchases = 
 AVERAGEX(
     VALUES(FactSales[Customer_ID]),
